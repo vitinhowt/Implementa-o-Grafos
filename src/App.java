@@ -9,14 +9,14 @@ public class App {
             Terminal grafoTerminais = new Terminal(terminais.size(), terminais);
             
 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de belém", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de Bragança", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de Santa Izabel", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de Bragança", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de castanhal", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Bragança", 3); //conexão mais longa 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Tauá", 1); //conexões rapidas
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Santa Izabel", 2); //conexão distante
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de belém", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de Bragança", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de Santa Izabel", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de Bragança", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de castanhal", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Bragança", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Tauá", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Santa Izabel", 1); 
 
 
             grafoTerminais.conexoes("Terminal de belém");
