@@ -24,8 +24,7 @@ class Terminal extends Grafo {
 
     public void conexoes(String inicio) {
         int vInicio = obterIndice(inicio);
-        
-      
+             
         for (int j = 0; j < numVertices; j++) {
             if (matrizAdjacencia[vInicio][j] > 0) {
                 System.out.println(nomeTerminais.get(vInicio) + " tem conexão com " + nomeTerminais.get(j) );
@@ -64,7 +63,6 @@ class Terminal extends Grafo {
     }
     
     public int grau(int v) {
-        
         if (v >= 0 && v < numVertices) {
             int grau = 0;
             for (int j = 0; j < numVertices; j++) {
@@ -77,23 +75,99 @@ class Terminal extends Grafo {
         }
     }
     
-    
 
     @Override
-public void exibirMatriz() {
-    System.out.print("    "); 
-    for (int j = 0; j < numVertices; j++) {
-        System.out.print(nomeTerminais.get(j) + "  ");
-    }
-    System.out.println(); 
-
-    
-
-    for (int i = 0; i < numVertices; i++) {
-        for (int j = 0; j < numVertices; j++) {
-            System.out.print("   " + matrizAdjacencia[i][j] + " ");
+    public void exibirMatriz() {
+        // Exibir cabeçalhos das colunas com os nomes dos terminais
+        System.out.print("  ");
+        for (int i = 0; i < nomeTerminais.size(); i++) {
+            String label = "T" + i;
+            System.out.print(label + "  ");
         }
         System.out.println(); 
+
+        // Exibir a matriz com os nomes dos terminais como rótulos nas linhas
+        for (int i = 0; i < numVertices; i++) {
+            String label = "T" + i;
+            System.out.print(label + " "); // Nome do terminal na linha
+            for (int j = 0; j < numVertices; j++) {
+                System.out.print(matrizAdjacencia[i][j] + "   ");
+            }
+            System.out.println();
+        }
     }
-}
+
+    //Usado para calulcar a menor distância entre todos os pares de vértices 
+    //Complexidade O(n³)
+    public void floydWarshall() {
+        //É preciso calcular a distância entre cada par de vértice
+        int[][] distancias = new int[numVertices][numVertices];
+
+        //Vamo inicializar a matriz de distâncias
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (i == j) {
+                    distancias[i][j] = 0; // Distância de um vértice para ele mesmo é 0
+                } else if (matrizAdjacencia[i][j] > 0) {
+                    distancias[i][j] = matrizAdjacencia[i][j]; // Aresta direta
+                } else {
+                    distancias[i][j] = Integer.MAX_VALUE; // Sem aresta, representa "infinito"
+                }
+            }
+        }
+
+        //Imprimir matriz de distância original
+        System.out.println("Impressão de matriz de distância original:");
+        System.out.print("  ");
+        for (int i = 0; i < nomeTerminais.size(); i++) {
+            String label = "T" + i;
+            System.out.print(label + "  ");
+        }
+        System.out.println(); 
+        for (int i = 0; i < numVertices; i++) {
+            String label = "T" + i;
+            System.out.print(label + " "); 
+            for (int j = 0; j < numVertices; j++) {
+                if (distancias[i][j] == Integer.MAX_VALUE) {
+                    System.out.print("∞   "); // Exibe o símbolo de infinito
+                } else {
+                    System.out.print(distancias[i][j] + "   ");
+                }
+            }
+            System.out.println();
+        }
+
+        //K será quantas vezes teremos que percorrer uma linha e uma coluna da matriz p/ processo de avaliação dos vértices
+        for (int k = 0; k < numVertices; k++){
+            for (int i = 0; i < numVertices; i++) {
+                for (int j = 0; j < numVertices; j++) {
+                    if (distancias[i][k] != Integer.MAX_VALUE && distancias[k][j] != Integer.MAX_VALUE) {
+                        distancias[i][j] = Math.min(distancias[i][j], distancias[i][k] + distancias[k][j]);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Impressão de matriz de distância final:");
+        System.out.print("  ");
+        for (int i = 0; i < nomeTerminais.size(); i++) {
+            String label = "T" + i;
+            System.out.print(label + "  ");
+        }
+        System.out.println(); 
+        for (int i = 0; i < numVertices; i++) {
+            String label = "T" + i;
+            System.out.print(label + " "); 
+            for (int j = 0; j < numVertices; j++) {
+                if (distancias[i][j] == Integer.MAX_VALUE) {
+                    System.out.print("∞   "); // Exibe o símbolo de infinito
+                } else {
+                    System.out.print(distancias[i][j] + "   ");
+                }
+            }
+            System.out.println();
+        }
+
+    }
+
 }

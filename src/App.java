@@ -30,6 +30,9 @@ public class App {
             System.out.println("Grau do Terminal de Belém: " + grauEspecifico);
 
             grafoTerminais.exibirMatriz();
+
+            grafoTerminais.floydWarshall();
+
         }
     }
 
