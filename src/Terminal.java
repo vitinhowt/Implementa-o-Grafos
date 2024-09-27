@@ -168,6 +168,21 @@ class Terminal extends Grafo {
             System.out.println();
         }
 
+        obterMenorDistancia(0, 2, distancias);
+        obterMenorDistancia(0, 0, distancias);
     }
+
+    public void obterMenorDistancia(int verticeInicio, int verticeFim, int[][] distancias) {
+        // A matriz de distâncias já foi calculada no método floydWarshall
+        // Vamos supor que você tenha uma matriz de distâncias chamada 'distancias'
+        int menorDistancia = distancias[verticeInicio][verticeFim];
+    
+        if (menorDistancia == Integer.MAX_VALUE) {
+            System.out.println("Não há caminho entre os vértices " + verticeInicio + " e " + verticeFim);
+        } else {
+            System.out.println("Menor distância: " + menorDistancia);
+        }
+    }
+    
 
 }

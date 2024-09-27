@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class App {
         public static void main(String[] args) {
-            //linha 888 do BRT de belém
+            
             ArrayList<String> terminais = new ArrayList<>(Arrays.asList("Terminal de ananindeua", "Terminal de belém", "Terminal de castanhal", "Terminal de Bragança", "Terminal de Tauá","Terminal de Santa Izabel"));
             
             Terminal grafoTerminais = new Terminal(terminais.size(), terminais);
