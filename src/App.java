@@ -10,12 +10,17 @@ public class App {
             
 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de belém", 3); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de ananindeua", 6); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de Bragança", 2); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Bragança", "Terminal de castanhal", 5); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de Santa Izabel", 5); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Santa Izabel", "Terminal de Tauá", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de Bragança", 8); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de castanhal", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de belém", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Bragança", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Tauá", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de belém", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Santa Izabel", 1); 
 
 

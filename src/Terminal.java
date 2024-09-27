@@ -169,7 +169,7 @@ class Terminal extends Grafo {
         }
 
         obterMenorDistancia(0, 2, distancias);
-        obterMenorDistancia(0, 0, distancias);
+        obterMenorDistancia(5, 4, distancias);
     }
 
     public void obterMenorDistancia(int verticeInicio, int verticeFim, int[][] distancias) {
