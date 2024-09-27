@@ -77,15 +77,23 @@ class Terminal extends Grafo {
         }
     }
     
+    
 
     @Override
-    public void exibirMatriz() {
-        System.out.println(nomeTerminais);
-        for (int i = 0; i < numVertices; i++) {
-            for (int j = 0; j < numVertices; j++) {
-                System.out.print(matrizAdjacencia[i][j] + " ");
-            }
-            System.out.println();
-        }
+public void exibirMatriz() {
+    System.out.print("    "); 
+    for (int j = 0; j < numVertices; j++) {
+        System.out.print(nomeTerminais.get(j) + "  ");
     }
+    System.out.println(); 
+
+    
+
+    for (int i = 0; i < numVertices; i++) {
+        for (int j = 0; j < numVertices; j++) {
+            System.out.print("   " + matrizAdjacencia[i][j] + " ");
+        }
+        System.out.println(); 
+    }
+}
 }
