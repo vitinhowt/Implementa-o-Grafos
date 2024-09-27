@@ -91,7 +91,7 @@ class Terminal extends Grafo {
             String label = "T" + i;
             System.out.print(label + " "); // Nome do terminal na linha
             for (int j = 0; j < numVertices; j++) {
-                System.out.print(matrizAdjacencia[i][j] + "   ");
+                System.out.print((matrizAdjacencia[i][j] > 0 ? 1 : 0) + "   ");
             }
             System.out.println();
         }

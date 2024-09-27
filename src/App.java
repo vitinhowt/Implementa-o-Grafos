@@ -9,10 +9,10 @@ public class App {
             Terminal grafoTerminais = new Terminal(terminais.size(), terminais);
             
 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de belém", 1); 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de Bragança", 1); 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de Santa Izabel", 1); 
-            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de Bragança", 1); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de belém", 3); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de castanhal", "Terminal de Bragança", 2); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de Tauá", "Terminal de Santa Izabel", 5); 
+            grafoTerminais.adicionarArestaEntreTerminais("Terminal de ananindeua", "Terminal de Bragança", 8); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de castanhal", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Bragança", 1); 
             grafoTerminais.adicionarArestaEntreTerminais("Terminal de belém", "Terminal de Tauá", 1); 
