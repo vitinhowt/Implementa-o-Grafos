@@ -13,6 +13,7 @@ class Grafo {
             return;
         }
         matrizAdjacencia[v1][v2] += peso;
+        matrizAdjacencia[v2][v1] += peso;
     }
 
     public void exibirMatriz() {

@@ -1,12 +1,14 @@
-class Terminal extends Grafo {
-    private String[] nomesTerminais;
+import java.util.ArrayList;
 
-    public Terminal(int numVertices, String[] nomesTerminais) {
+class Terminal extends Grafo {
+    public static ArrayList<String> nomeTerminais = new ArrayList<>();
+
+    public Terminal(int numVertices, ArrayList<String> nomeTerminais) {
         super(numVertices);
-        if (nomesTerminais.length != numVertices) {
+        if (nomeTerminais.size() != numVertices) {
             throw new IllegalArgumentException("O número de terminais deve ser igual ao número de vértices.");
         }
-        this.nomesTerminais = nomesTerminais;
+        Terminal.nomeTerminais = nomeTerminais;  // Armazena os nomes dos terminais
     }
 
     public void adicionarArestaEntreTerminais(String nome1, String nome2, int peso) {
@@ -19,45 +21,66 @@ class Terminal extends Grafo {
         }
     }
 
-    public boolean buscaDFS(String inicio, String destino) {
+
+    public void conexoes(String inicio) {
         int vInicio = obterIndice(inicio);
-        int vDestino = obterIndice(destino);
-        if (vInicio == -1 || vDestino == -1) {
-            System.out.println("Terminal de início ou destino inválido.");
-            return false;
-        }
-        boolean[] visitados = new boolean[numVertices];
-        return dfs(vInicio, vDestino, visitados);
-    }
-
-    private boolean dfs(int v, int destino, boolean[] visitados) {
-        if (v == destino) {
-            System.out.println("Terminal " + nomesTerminais[v] + " vai até Terminal " + nomesTerminais[destino]);
-            return true;
-        }
-        visitados[v] = true;
-
-        for (int i = 0; i < numVertices; i++) {
-            if (matrizAdjacencia[v][i] > 0 && !visitados[i]) {
-                if (dfs(i, destino, visitados)) {
-                    System.out.println("Terminal " + nomesTerminais[v] + " vai até Terminal " + nomesTerminais[i]);
-                    return true;
-                }
+        
+      
+        for (int j = 0; j < numVertices; j++) {
+            if (matrizAdjacencia[vInicio][j] > 0) {
+                System.out.println(nomeTerminais.get(vInicio) + " tem conexão com " + nomeTerminais.get(j) );
+                System.out.println();
+                System.out.println(nomeTerminais.get(j) + " tem conexão com " + nomeTerminais.get(vInicio) );
+                System.out.println();
             }
         }
-        return false;
+    
+        
     }
 
+
     private int obterIndice(String nome) {
-        for (int i = 0; i < nomesTerminais.length; i++) {
-            if (nomesTerminais[i].equals(nome)) {
+        for (int i = 0; i < nomeTerminais.size(); i++) {
+            if (nomeTerminais.get(i).equals(nome)) {
                 return i;
             }
         }
-        return -1;
+        return 0;
     }
 
+
+
+    public int[] grau() {
+        
+        int[] graus = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            int grau = 0;
+            for (int j = 0; j < numVertices; j++) {
+                grau += matrizAdjacencia[i][j];
+            }
+            graus[i] = grau;
+        }
+        return graus;
+    }
+    
+    public int grau(int v) {
+        
+        if (v >= 0 && v < numVertices) {
+            int grau = 0;
+            for (int j = 0; j < numVertices; j++) {
+                grau += matrizAdjacencia[v][j];
+            }
+            return grau;
+        } else {
+            System.out.println("Vértice não existe!");
+            return -1; 
+        }
+    }
+    
+
+    @Override
     public void exibirMatriz() {
+        System.out.println(nomeTerminais);
         for (int i = 0; i < numVertices; i++) {
             for (int j = 0; j < numVertices; j++) {
                 System.out.print(matrizAdjacencia[i][j] + " ");
